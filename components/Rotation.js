@@ -1,18 +1,18 @@
 //Terrain Rotation
 AFRAME.registerComponent("terrain-rotation-reader", {
   schema: {
-    speedOfRoation: { type: "number", default: 0 }    
+    speedOfRotation: { type: "number", default: 0 }    
   },
   init: function () {
     window.addEventListener("keydown", (e) => {
       if (e.key === "ArrowRight") {
-        if (this.data.speedOfRoation < 0.1) {
-          this.data.speedOfRoation += 0.01;
+        if (this.data.speedOfRotation < 0.1) {
+          this.data.speedOfRotation += 0.01;
         }
       }
       if (e.key === "ArrowLeft") {
-        if (this.data.speedOfRoation > -0.1) {
-          this.data.speedOfRoation -= 0.01;
+        if (this.data.speedOfRotation > -0.1) {
+          this.data.speedOfRotation -= 0.01;
         }
       }
     });
@@ -20,7 +20,7 @@ AFRAME.registerComponent("terrain-rotation-reader", {
   tick: function () {
     var mapRotation = this.el.getAttribute("rotation");
 
-    mapRotation.y += this.data.speedOfRoation;
+    mapRotation.y += this.data.speedOfRotation;
 
     this.el.setAttribute("rotation", {
       x: mapRotation.x,
